@@ -1,0 +1,51 @@
+<?php
+    require 'partials/top.html';
+    require 'partials/nav.html';
+    require 'partials/slider.html';
+?>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-4 offset-1">
+            <form action="" method="post">
+                <div class="mb-3">
+                    <label for="producer" class="form-label">Proizvodjac</label>
+                    <input type="text" class="form-control" id="producer">
+                </div>
+                <div class="mb-3">
+                    <label for="model" class="form-label">Model</label>
+                    <input type="text" class="form-control" id="model">
+                </div>
+                <div class="mb-3">
+                    <label for="price_from" class="form-label">Cena od</label>
+                    <input type="text" class="form-control" id="price_from">
+                </div>
+                <div class="mb-3">
+                    <label for="price_to" class="form-label">Cena do</label>
+                    <input type="text" class="form-control" id="price_to">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-success">Pretrazi</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-7">
+            <div class="row">
+                <?php foreach($models as $modelArr): ?>
+                <div class="col-2">
+                    <div class="card" style="width: 15rem;">
+                        <img src="<?php echo $modelArr->mainImg; ?>" class="card-img-top" alt="<?php echo $modelArr->name ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $modelArr->product.' '.$modelArr->name; ?></h5>
+                            <p class="card-text"><?php echo $modelArr->description ; ?></p>
+                            <p class="card-text"><?php echo $modelArr->price; ?> rsd</p>
+                            <a href="#" class="btn btn-primary">Prikazi detalje</a>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <?php require 'partials/pagination.html'; ?>
+        </div>
+    </div>
+</div>
+<?php require 'partials/bottom.html'; ?>

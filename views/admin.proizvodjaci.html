@@ -1,0 +1,74 @@
+<?php
+require 'partials/top.html';
+require 'partials/nav.html';
+?>
+<div class="container">
+    <div class="row mt-3">
+        <?php require 'partials/tabs.html'; ?>
+    </div>
+    <div class="row mt-3" id="tableProd">
+        <div class="col-10 offset-2">
+            <!-- content -->
+            <button id="btnAddProd" class="btn btn-primary btn-sm mb-3">Dodaj proizvodjaca</button>
+            <h6>Proizvodjaci telefona</h6>
+            
+            <?php if ($producer->saveMessage): ?>
+                <div class="alert alert-success mt-3">
+                    Uspesno ste uneli novog proizvodjaca u sistem.
+                </div>
+            <?php endif; ?>
+
+            <?php if ($producer->editMessage): ?>
+                <div class="alert alert-success mt-3">
+                    Uspesno ste izmenili podatke proizvodjaca.
+                </div>
+            <?php endif; ?>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Izmena/Brisanje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($manufacturers as $prod): ?>
+                        <tr>
+                            <td><?php echo $prod->name; ?></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" onclick="editProducer('<?php echo $prod->id; ?>', 'manufacturers', 'edit')">Izmeni</button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteRec('<?php echo $prod->id; ?>','manufacturers', 'del')">Izbrisi</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            
+            <?php require 'partials/pagination.html'; ?>
+        </div>
+    </div>
+
+    <div class="row mb-3" id="addProd">
+        <div class="col-10 offset-2">
+            <button id="btnBackProd" class="btn btn-primary btn-sm mb-3">Nazad</button>
+            <h6>Dodaj proizvodjaca</h6>
+            <form action="admin_index.php?menu=<?php echo $menu; ?>" method="post">
+                <input type="text" name="producer_name" placeholder="Name" class="form-control mb-3">
+                <button name="btnSaveProducer" class="btn btn-primary form-control">Sacuvaj</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mb-3" id="editProd">
+        <div class="col-10 offset-2">
+            <button id="btnEditBackProd" class="btn btn-primary btn-sm mb-3">Nazad</button>
+            <h6>Izmena proizvodjaca</h6>
+            <form action="admin_index.php?menu=<?php echo $menu; ?>" method="post">
+                <input type="hidden" name="pid"/>
+                <input type="text" name="producer_name_edit" placeholder="name" class="form-control mb-3">
+                <button name="btnEditProducer" class="btn btn-primary form-control">Sacuvaj izmenu</button>
+            </form>
+        </div>
+    </div>
+</div>
+<?php require 'partials/bottom.html'; ?>

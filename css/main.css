@@ -1,0 +1,30 @@
+footer{
+    width:100%;
+    background-color: darkslategray;
+    padding-top: 25px;
+    text-align: center;
+}
+footer ul li{
+    list-style: none;
+    text-align: start;
+}
+footer ul li a{
+    text-decoration: none;
+    color: white;
+
+}
+footer h5{
+    color: coral;
+}
+#addProd{
+    display: none;
+}
+#editProd{
+    display: none;
+}
+#addModel{
+    display: none;
+}
+#editModel{
+    display: none;
+}

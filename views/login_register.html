@@ -1,0 +1,50 @@
+<?php
+    require 'partials/top.html';
+    require 'partials/nav.html';
+?>
+<div class="container">
+    <div class="row m-3">
+        <div class="col-4 offset-1">
+           <!-- login form-->
+           <h6>Login</h6>
+            <form action="login_register.php" method="post">
+                <input type="email" name="login_email" class="form-control mb-3" placeholder="Email" required>
+                <input type="password" name="login_password" class="form-control mb-3" placeholder="Password" required>
+                <button class="btn btn-primary form-control" name="btnLogin">Login</button>
+            </form><br>
+            <?php if(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']->role == "Korisnik"): ?>
+                <div class="alert alert-success">
+                    Uspesno ste se prijavili. <a href="index.php">Mozete naruciti!</a>
+                </div>
+            <?php elseif(isset($_SESSION['loggedUser']) && $_SESSION['loggedUser']->role == "Administrator"): ?>
+                <div class="alert alert-success">
+                    Uspesno ste se prijavili. Vi ste administrator sajta, <a href="admin_index.php">Mozete ici na admin panel!</a>
+                </div>
+            <?php elseif((isset($_POST['btnLogin']))): ?>
+                <div class="alert alert-danger">
+                    Email ili lozinka nisu tacno uneti!
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="col-7">
+            <!-- register form -->
+            <h6>Register</h6>
+            <form action="login_register.php" method="post">
+                <input type="text" name="register_name" placeholder="Name" class="form-control mb-3" required>
+                <input type="email" name="register_email" class="form-control mb-3" placeholder="Email" required>
+                <input type="password" name="register_password" class="form-control mb-3" placeholder="Password" required>
+                <button class="btn btn-warning form-control" name="btnRegister">Register</button>
+            </form><br>
+            <?php if($user->resultRegister): ?>
+                <div class="alert alert-success">
+                    Uspesno ste se registovali. Sada se mozete logovati na sajt!
+                </div>
+            <?php elseif((isset($_POST['btnRegister']))): ?>
+                <div class="alert alert-danger">
+                    Doslo je do greske prilikom registracije!
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php require 'partials/bottom.html'; ?>

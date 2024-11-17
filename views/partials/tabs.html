@@ -1,0 +1,17 @@
+<div class="col-10 offset-2">
+    <!-- admin meni -->
+    <ul class="nav nav-underline">
+        <li class="nav-item">
+            <a class="nav-link <?php if($menu == 'korisnici') : ?> active <?php endif; ?>" href="admin_index.php?menu=korisnici">Korisnici</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if($menu == 'proizvodjaci') : ?> active <?php endif; ?>" href="admin_index.php?menu=proizvodjaci">Proizvodjaci</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if($menu == 'modeli') : ?> active <?php endif; ?>" href="admin_index.php?menu=modeli">Modeli</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Narudzbine</a>
+        </li>
+    </ul>
+</div>
