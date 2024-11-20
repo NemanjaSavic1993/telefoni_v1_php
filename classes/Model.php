@@ -68,4 +68,53 @@ class Model extends QueryBuilder{
             $this->editMessage = false;
         }
     }
+
+    public function filter(){
+        $arr = array();
+
+        $producer_name = $_POST['producer_name'];
+        $model_name = $_POST['model_name'];
+        $price_from = $_POST['price_from'];
+        $price_to = $_POST['price_to'];
+
+        $sql = "SELECT m.*, p.name as product,(select pathSmall from images where id_model = m.id order by id limit 1) as mainImg FROM models m inner join manufacturers p on m.id_producer = p.id where 1 = 1";
+
+        if(!empty($producer_name)){
+            $sql = $sql.' and p.name like "%"?"%"';
+            array_push($arr,$producer_name);
+        }
+        if(!empty($model_name)){
+            $sql = $sql.' and m.name like "%"?"%"';
+            array_push($arr,$model_name);
+        }
+        if(!empty($price_from)){
+            $sql = $sql.' and price > ?';
+            array_push($arr,$price_from);
+        }
+        if(!empty($price_to)){
+            $sql = $sql.' and price < ?';
+            array_push($arr, $price_to);
+        }
+
+        $query = $this->db->prepare($sql);
+        $query->execute($arr);
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function search(){
+
+        $text = $_POST['search_text'];
+
+        $sql = "SELECT m.*, p.name as product,(select pathSmall from images where id_model = m.id order by id limit 1) as mainImg FROM models m inner join manufacturers p on m.id_producer = p.id";
+
+        if(!empty($text)){
+            $sql = $sql." where m.name like ? or p.name like ?";
+        }
+
+        $query = $this->db->prepare($sql);
+        $query->execute(['%' . $text . '%', '%' . $text . '%']);
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }

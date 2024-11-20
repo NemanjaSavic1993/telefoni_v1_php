@@ -21,9 +21,9 @@
             </li>
             <?php endif; ?>
         </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Pretrazi</button>
+        <form class="d-flex" role="search" method="post">
+            <input class="form-control me-2" type="search" placeholder="Naziv proizvoda" name="search_text" value="<?php if(isset($_POST['search_text'])) echo $_POST['search_text']; ?>">
+            <button class="btn btn-outline-success" name="btnSearch">Pretrazi</button>
         </form>
     </div>
 </nav>

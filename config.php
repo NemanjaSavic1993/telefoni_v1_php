@@ -3,7 +3,7 @@
         "database" => [
             "host" => "localhost",
             "user" => "root",
-            "password" => "*****",
+            "password" => "Savic13!",
             "dbname" => "phone_app"
         ]
     ];

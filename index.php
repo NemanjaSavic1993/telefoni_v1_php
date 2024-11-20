@@ -9,4 +9,12 @@
 
     $models = $model->paginate(5, $result['offset']);
 
+    if(isset($_POST['btnPretrazi'])){
+        $models = $model->filter();
+    }
+
+    if(isset($_POST['btnSearch'])){
+        $models = $model->search();
+    }
+
     require_once 'views/index.html';
