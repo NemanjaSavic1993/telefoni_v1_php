@@ -1,0 +1,84 @@
+<?php
+require 'partials/top.html';
+require 'partials/nav.html';
+?>
+<div class="container">
+    <div class="row mt-3">
+        <?php require 'partials/tabs.html'; ?>
+    </div>
+    <div class="row mt-3" id="tableSlajd">
+        <div class="col-10 offset-2">
+            <!-- content -->
+            <button id="btnAddSlajd" class="btn btn-primary btn-sm mb-3">Dodaj slajd</button>
+            <h6>Slajderi</h6>
+            
+            <!-- <?php if ($producer->saveMessage): ?>
+                <div class="alert alert-success mt-3">
+                    Uspesno ste uneli novog proizvodjaca u sistem.
+                </div>
+            <?php endif; ?>
+
+            <?php if ($producer->editMessage): ?>
+                <div class="alert alert-success mt-3">
+                    Uspesno ste izmenili podatke proizvodjaca.
+                </div>
+            <?php endif; ?> -->
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Slika</th>
+                        <th>Izmena/Brisanje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($sliders as $img): ?>
+                        <tr>
+                            <td><?php echo $img->title; ?></td>
+                            <td>ovde dodati sliku</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">Izmeni</button>
+                                <button class="btn btn-danger btn-sm">Izbrisi</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            
+            <?php require 'partials/pagination.html'; ?>
+        </div>
+    </div>
+
+    <div class="row mb-3" id="addSlajd">
+        <div class="col-10 offset-2">
+            <button id="btnBackSlajd" class="btn btn-primary btn-sm mb-3">Nazad</button>
+            <h6>Dodaj slajd</h6>
+            <form action="admin_index.php?menu=<?php echo $menu; ?>" method="post" enctype="multipart/form-data">
+                <input type="text" name="title" placeholder="Title" class="form-control mb-3">
+                <textarea name="description" class="form-control mb-3" placeholder="Description" cols="30" rows="10"></textarea>
+                <input type="file" name="slider" required class="form-control mb-3" accept="image/*">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="valid" id="valid">
+                    <label class="form-check-label" for="valid">
+                        Vidljiv
+                    </label>
+                </div>
+                <button name="btnSaveSlider" class="btn btn-primary form-control">Sacuvaj</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mb-3" id="editSlajd">
+        <div class="col-10 offset-2">
+            <button id="btnEditBackSlajd" class="btn btn-primary btn-sm mb-3">Nazad</button>
+            <h6>Izmena slajda</h6>
+            <!-- <form action="admin_index.php?menu=<?php echo $menu; ?>" method="post">
+                <input type="hidden" name="pid"/>
+                <input type="text" name="producer_name_edit" placeholder="name" class="form-control mb-3">
+                <button name="btnEditProducer" class="btn btn-primary form-control">Sacuvaj izmenu</button>
+            </form> -->
+        </div>
+    </div>
+</div>
+<?php require 'partials/bottom.html'; ?>

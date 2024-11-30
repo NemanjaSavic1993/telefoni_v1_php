@@ -84,6 +84,18 @@
 
 
         require_once 'views/admin.modeli.html';
+    }elseif($menu == 'slajder'){
+
+
+        $allSlider = $slider->getAll();
+
+        $number = ceil(count($allSlider) / 5);
+
+        $result = pagination($number);
+
+        $sliders = $slider->paginate(5, $result['offset']);
+
+        require_once 'views/admin.slajderi.html';
     }
 
     

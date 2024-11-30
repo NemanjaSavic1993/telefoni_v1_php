@@ -11,12 +11,14 @@
     require 'classes/Producer.php';
     require 'classes/Image.php';
     require 'classes/Model.php';
+    require 'classes/Slider.php';
 
     $query = new QueryBuilder($db);
     $user = new User($db);
     $producer = new Producer($db);
     $image = new Image($db);
     $model = new Model($db);
+    $slider = new Slider($db);
 
     
     function pagination($number){

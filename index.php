@@ -9,6 +9,8 @@
 
     $models = $model->paginate(5, $result['offset']);
 
+    $sliders = $slider->getActiveSliders();
+
     if(isset($_POST['btnPretrazi'])){
         $models = $model->filter();
     }

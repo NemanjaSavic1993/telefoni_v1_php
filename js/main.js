@@ -96,17 +96,17 @@ let btnEditBackModel = document.querySelector("#btnEditBackModel");
 if(btnAddModel != null){
     btnAddModel.addEventListener('click', function(){
         document.getElementById("addModel").style.display = "block";
-        document.getElementById("tabelModel").style.display = "none";
+        document.getElementById("tableModel").style.display = "none";
     });
 
     btnBackModel.addEventListener('click', function(){
         document.getElementById("addModel").style.display = "none";
-        document.getElementById("tabelModel").style.display = "block";
+        document.getElementById("tableModel").style.display = "block";
     });
     
     btnEditBackModel.addEventListener('click', function(){
         document.getElementById("editModel").style.display = "none";
-        document.getElementById("tabelModel").style.display = "block";
+        document.getElementById("tableModel").style.display = "block";
     });
 }
 
@@ -140,3 +140,27 @@ function editModel(id, table, action){
 }
 
 // end administriranje modela
+
+// start administriranje slajdera
+let btnAddSlider = document.querySelector("#btnAddSlajd");    
+let btnBackSlider = document.querySelector("#btnBackSlajd");
+let btnEditBackSlider = document.querySelector("#btnEditBackSlajd");
+
+if(btnAddSlider != null){
+    btnAddSlider.addEventListener('click', function(){
+        document.getElementById("addSlajd").style.display = "block";
+        document.getElementById("tableSlajd").style.display = "none";
+    });
+
+    btnBackSlider.addEventListener('click', function(){
+        document.getElementById("addSlajd").style.display = "none";
+        document.getElementById("tableSlajd").style.display = "block";
+    });
+    
+    btnEditBackSlider.addEventListener('click', function(){
+        document.getElementById("editSlajd").style.display = "none";
+        document.getElementById("tableSlajd").style.display = "block";
+    });
+}
+
+// end administiriranje slajdera
